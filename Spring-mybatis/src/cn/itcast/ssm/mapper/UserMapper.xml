@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
+<!-- namespace命名空间，作用就是对sql进行分类化管理，理解sql隔离 -->
+<!-- 注意使用mapper代理开发，namespace有特殊的作用 -->
+
+<mapper namespace="cn.itcast.ssm.mapper.UserMapper">
+	<!-- 在映射文件中配置很多sql语句 -->
+	<!-- 需求：通过id查询用户表的记录 -->
+	<!-- 通过select执行数据库查询
+		id：标识映射文件中的sql
+		将sql语句封装到mapperedStatement对象中，所以将id称为statement的id
+		parameterType：指定输入参数的类型，这里是int
+		resultType：指定sql输出结果的映射的java对象类型，seelec指定	resultType表示将单条记录映射成的java对象
+		#{}表示一个占位符
+		#{id} id表示接收到输入的参数，参数名称是id，如果输入的类型是简单类型，#{}中的参数名可以是任意的，
+	 -->
+	 
+ 	 	<select id="findUserById" parameterType="int" resultType="cn.itcast.ssm.po.User">
+ 	 		SELECT * FROM USER WHERE id=#{id}
+ 	 	</select>
+ 
+</mapper>
